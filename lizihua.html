@@ -92,13 +92,11 @@
             initAnimate();
         }
     }
-
     Array.prototype.forEach = function (callback) {
         for (var i = 0; i < this.length; i++) {
             callback.call(this[i]);
         }
     }
-
     function getimgData(text) {
         drawText(text);
         var imgData = context.getImageData(0, 0, canvas.width, canvas.height);
