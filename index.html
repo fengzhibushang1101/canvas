@@ -13,7 +13,7 @@
     window.onload = function () {
         canvas = document.getElementById("cas");
         context = canvas.getContext('2d');
-        var dots = getimgData(document.getElementById('name').value);
+        var dots = getimgData("一梦三生");
         var pause = false;
         initAnimate();
         function initAnimate() {
@@ -34,7 +34,6 @@
         var derection = true;
 
         function animate() {
-            animateRunning = true;
             var thisTime = +new Date();
             context.clearRect(0, 0, canvas.width, canvas.height);
             dots.forEach(function () {
@@ -153,10 +152,7 @@
 <body>
 <div>
     <canvas id='cas' width="1000" height="500">浏览器不支持canvas</canvas>
-    <div style="width:150px;margin:10px auto">
-        <input type="text" name="" id="name" style="width:80px;" value="一梦三生">
-        <button id="startBtn">开始</button>
-    </div>
+
 </div>
 </body>
 </html>
