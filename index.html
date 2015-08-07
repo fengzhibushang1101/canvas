@@ -15,6 +15,9 @@
         context = canvas.getContext('2d');
         var dots = getimgData("一梦三生");
         var pause = false;
+		        //计算帧速率
+        var lastTime;
+        var derection = true;
         initAnimate();
         function initAnimate() {
             dots.forEach(function () {
@@ -29,9 +32,7 @@
             animate();
         }
 
-        //计算帧速率
-        var lastTime;
-        var derection = true;
+
 
         function animate() {
             var thisTime = +new Date();
@@ -39,7 +40,7 @@
             dots.forEach(function () {
                 var dot = this;
                 if (derection) {
-                    if (Math.abs(dot.dx - dot.x) < 0.1 && Math.abs(dot.dy - dot.y) < 0.1 ) {
+                    if (Math.abs(dot.dx - dot.x) < 0.1 && Math.abs(dot.dy - dot.y) < 0.1&& Math.abs(dot.dz - dot.z) < 0.1 ) {
                         dot.x = dot.dx;
                         dot.y = dot.dy;
 						dot.z = dot.dz;
@@ -52,7 +53,7 @@
                     }
                 }
                 else {
-                    if (Math.abs(dot.tx - dot.x) < 0.1 && Math.abs(dot.ty - dot.y) < 0.1 ) {
+                    if (Math.abs(dot.tx - dot.x) < 0.1 && Math.abs(dot.ty - dot.y) < 0.1&& Math.abs(dot.tz - dot.z) < 0.1 ) {
                         dot.x = dot.tx;
                         dot.y = dot.ty;
 						dot.z = dot.tz;
@@ -80,13 +81,6 @@
                     mozRequestAnimationFrame(animate);
                 }
             }
-        }
-        document.getElementById('startBtn').onclick = function () {
-            if (!pause) return;
-            dots = getimgData(document.getElementById('name').value);
-            derection = true;
-            pause = false;
-            initAnimate();
         }
     }
     Array.prototype.forEach = function (callback) {
